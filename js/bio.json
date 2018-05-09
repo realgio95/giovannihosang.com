@@ -12,7 +12,4 @@
 		"skills": ["Javascript", "ReactJS", "Java", "C++", "C", "Java", "Python"] ,
 		"interests": ["Soccer", "Cricket", "Reggae", "Soca", "Cricket"],
 		"biopic": "",
-		display(){
-
-		} 	
 }
