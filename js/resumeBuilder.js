@@ -108,6 +108,21 @@ var education = {
     ]
 };
 
+bio.display = function(){
+
+};
+
+work.display = function(){
+
+};
+
+projects.display = function(){
+
+};
+
+education.display = function(){
+
+};
 
 var formattedHeaderName = HTMLheaderName.replace("%data%", bio.name);
 var formattedHeaderRole = HTMLheaderRole.replace("%data%", bio.role);
@@ -211,3 +226,6 @@ for (var i=0;i < numOfOnlineSchools; i++){
     $("#education").append(formattedOnlineDates);
     $("#education").append(formattedOnlineURL);
 }
+
+//Adding the Google Maps script element to the index.html
+$("#mapDiv").append(googleMap);
