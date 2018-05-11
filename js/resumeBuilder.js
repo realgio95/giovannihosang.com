@@ -2,7 +2,7 @@
 This is empty on purpose! Your code to build the resume will go here.
  */
 
- var bio = {
+var bio = {
     "name": "Giovanni HoSang",
     "role": "Software Developer",
     "contacts": {
@@ -10,62 +10,62 @@ This is empty on purpose! Your code to build the resume will go here.
         "email": "giovanni.hosang@gmail.com",
         "github": "realgio95",
         "twitter": "dappastar1995",
-        "location": "Vancouver, BC, Canada"
+        "location": "Vancouver, BC, Canada",
+        "linkedin": "ghosang"
     },
-    "welcomeMessage": "Where Development meets personality",
+    "welcomeMessage": "Where personality meets tech!",
     "skills": ["Javascript", "ReactJS", "Java", "C++", "C", "Java", "Python"] ,
     "interests": ["Soccer", "Cricket", "Reggae", "Soca", "Cricket"],
-    "biopic": "",
-    "display": 	"function(){}"
-}
+    "biopic": "https://scontent.fcxh3-1.fna.fbcdn.net/v/t1.0-9/30652642_10204563817451903_7451400214222471168_n.jpg?_nc_cat=0&oh=a7ebafb6772c6220d6510ad51ecada88&oe=5B54F9DF"
+};
 
- var work = {
-	"jobs": [{
-			"employer": "SAP Labs",
-			"title": "Agile Developer Intern",
-			"location": "Vancouver, Canada",
-			"dates": "2017",
-			"description": "Worked in teh Charting Team on the SAP Analytics Cloud Business Intelligence Solution" 
-		},{
-			"employer": "GraceKennedy Financial Group",
-			"title": "Social Media Manager",
-			"location": "Kingston, Jamaica",
-			"dates": "2015",
-			"description": "Managed the Facebook Marketing Strategy for the SchoolBoy Cricket competitions" 
-		},{
-			"employer": "Intcomex",
-			"title": "Computer Technician Intern",
-			"location": "Kingston, Jamaica",
-			"dates": "2013",
-			"description": "Worked to fix various computer issues ranging from hardware to software issues" 
-		}]
-}
- var projects = {
-	"projects": [{
-			"title": "Giovanni HoSang's Website ",
-			"dates": "2018",
-			"description": "This is an online Resume highlightingh my skills and technical experience. Visit www.giovannihosang.com",
-			"images": [""]
-		}, {
-			"title": "SmartStrument",
-			"dates": "2017",
-			"description": "SmartStrument is an IOT application where Arduino was used to scare musical notes and render them to an LED that's used to teach people how to play a pianio",
-			"images": [""]
-		}, {
-			"title": "EndItNow",
-			"dates": "2017",
-			"description": "EndItNow was created at the Nwhacks 2017 at University of British Columbia. Enditnow  is a platform for Activism against cyber bullyism to fight harrasment using positive campaigns and trends around the world.",
-			"images": [""]
-		}, {
-			"title": "StartNow",
-			"dates": "2016",
-			"description": "StartNow is a web-application targeting Simon Fraser University students who want to work on projects outside of the classroom. Users of our application will be able to log in, create profiles, create project profiles, seek other people with the appropriate skillsets, join existing project groups, post on a project discussion board, create meeting locations, and communicate with fellow users using the chat feature to begin their collaborative process. These features will be discussed further in a latter section.",
-			"images": ""
-		}
-	],	
-	"display": 	"function(){}"
-}
- var education = {
+var work = {
+    "jobs": [{
+    		"employer": "SAP Labs",
+    		"title": "Agile Developer Intern",
+    		"location": "Vancouver, Canada",
+    		"dates": "2017",
+    		"description": "Worked in teh Charting Team on the SAP Analytics Cloud Business Intelligence Solution" 
+    	},{
+    		"employer": "GraceKennedy Financial Group",
+    		"title": "Social Media Manager",
+    		"location": "Kingston, Jamaica",
+    		"dates": "2015",
+    		"description": "Managed the Facebook Marketing Strategy for the SchoolBoy Cricket competitions" 
+    	},{
+    		"employer": "Intcomex",
+    		"title": "Computer Technician Intern",
+    		"location": "Kingston, Jamaica",
+    		"dates": "2013",
+    		"description": "Worked to fix various computer issues ranging from hardware to software issues" 
+    	}]
+};
+var projects = {
+    "projects": [{
+    		"title": "Giovanni HoSang's Website ",
+    		"dates": "2018",
+    		"description": "This is an online Resume highlighting my skills and technical experience. Visit www.giovannihosang.com",
+    		"images": [""]
+    	}, {
+    		"title": "SmartStrument",
+    		"dates": "2017",
+    		"description": "SmartStrument is an IOT application where Arduino was used to scare musical notes and render them to an LED that's used to teach people how to play a pianio",
+    		"images": [""]
+    	}, {
+    		"title": "EndItNow",
+    		"dates": "2017",
+    		"description": "EndItNow was created at the Nwhacks 2017 at University of British Columbia. Enditnow  is a platform for Activism against cyber bullyism to fight harrasment using positive campaigns and trends around the world.",
+    		"images": [""]
+    	}, {
+    		"title": "StartNow",
+    		"dates": "2016",
+    		"description": "StartNow is a web-application targeting Simon Fraser University students who want to work on projects outside of the classroom. Users of our application will be able to log in, create profiles, create project profiles, seek other people with the appropriate skillsets, join existing project groups, post on a project discussion board, create meeting locations, and communicate with fellow users using the chat feature to begin their collaborative process. These features will be discussed further in a latter section.",
+    		"images": ""
+    	}
+    ]
+};
+
+var education = {
     "schools": [
       {
         "name": "Simon Fraser University",
@@ -74,7 +74,7 @@ This is empty on purpose! Your code to build the resume will go here.
         "majors": "Computer Science",
         "dates": 2019,
         "url": "https://www.sfu.ca"
-  
+
       },{
         "name": "University of the West Indies, Mona Campus",
         "location": "Kingston, Jamaica",
@@ -106,9 +106,74 @@ This is empty on purpose! Your code to build the resume will go here.
         "url": "https://cs50.harvard.edu/"
       }
     ]
-  }
+};
 
 
-var formattedbio = .replace("%data", bioName);
+var formattedHeaderName = HTMLheaderName.replace("%data%", bio.name);
+var formattedHeaderRole = HTMLheaderRole.replace("%data%", bio.role);
 
- alert(bio.name);
+
+$("#header").prepend(formattedHeaderRole);
+$("#header").prepend(formattedHeaderName);
+
+var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+var formattedLinkedIn = HTMLlinkedIn.replace("%data%", bio.contacts.linkedin) ;
+var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+
+$("#topContacts").append(formattedMobile);
+$("#topContacts").append(formattedEmail);
+$("#topContacts").append(formattedGithub);
+$("#topContacts").append(formattedTwitter);
+$("#topContacts").append(formattedLinkedIn);
+$("#topContacts").append(formattedLocation);
+
+var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
+var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+
+$("#header").append(formattedBioPic);
+$("#header").append(formattedWelcomeMsg);
+
+var formattedSkillsStart = HTMLskillsStart.replace("%data%", bio.skills);
+
+var numberOfSkills = bio.skills.length;
+
+var formattedSkill;
+for (var i=0; i < numberOfSkills ; i++){
+    formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
+    $("#header").append(formattedSkill);
+}
+
+var numOfJobs = work.jobs.length;
+
+for (var i=0;i < numOfJobs; i++){
+    var formattedWorkStart = HTMLworkStart.replace("%data%", work.jobs[i].dates);
+    var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", work.jobs[i].employer);
+    var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[i].title);
+    var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[i].dates);
+    var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[i].location);
+    var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[i].description);
+
+    $("#workExperience").append(formattedWorkEmployer);
+    $("#workExperience").append(formattedWorkTitle);
+    $("#workExperience").append(formattedWorkDates);
+    $("#workExperience").append(formattedWorkLocation);
+    $("#workExperience").append(formattedWorkDescription);
+}
+
+var numOfProjects = projects.projects.length;
+
+for (var i=0;i < numOfProjects; i++){
+    var formattedWorkStart = HTMLprojectStart.replace("%data%", work.jobs[i].dates);
+    var formattedWorkTitle = HTMLprojectTitle.replace("%data%", work.jobs[i].title);
+    var formattedWorkDates = HTMLprojectDates.replace("%data%", work.jobs[i].dates);
+    var formattedWorkDescription = HTMLprojectDescription.replace("%data%", work.jobs[i].description);
+
+    $("#projects").append(formattedWorkEmployer);
+    $("#projects").append(formattedWorkTitle);
+    $("#projects").append(formattedWorkDates);
+    $("#projects").append(formattedWorkLocation);
+    $("#projects").append(formattedWorkDescription);
+}
