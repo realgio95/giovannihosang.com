@@ -8,10 +8,10 @@ var bio = {
     "contacts": {
         "mobile": "604-862-3795",
         "email": "giovanni.hosang@gmail.com",
-        "github": "realgio95",
-        "twitter": "dappastar1995",
+        "github": "https://github.com/realgio95",
+        "twitter": "https://twitter.com/dappastar1995",
         "location": "Vancouver, BC, Canada",
-        "linkedin": "ghosang"
+        "linkedin": "https://www.linkedin.com/in/ghosang/"
     },
     "welcomeMessage": "Where personality meets tech!",
     "skills": ["Javascript", "ReactJS", "Java", "C++", "C", "Java", "Python"] ,
@@ -24,20 +24,20 @@ var work = {
     		"employer": "SAP Labs",
     		"title": "Agile Developer Intern",
     		"location": "Vancouver, Canada",
-    		"dates": "2017",
-    		"description": "Worked in teh Charting Team on the SAP Analytics Cloud Business Intelligence Solution" 
+    		"dates": "Jan 2017 - Aug 2018",
+    		"description": "Worked on implementing enterprise business intelligence, planning and predictive analytics solution as a part of the charting team tasked with implementing various features enabling state of the art financial reporting capabilities." 
     	},{
     		"employer": "GraceKennedy Financial Group",
     		"title": "Social Media Manager",
     		"location": "Kingston, Jamaica",
-    		"dates": "2015",
-    		"description": "Managed the Facebook Marketing Strategy for the SchoolBoy Cricket competitions" 
+    		"dates": "Jan 2014 - April 2015",
+    		"description": "Managed the Facebook Marketing Strategy for the SchoolBoy Cricket competitions, by Updating the various social media platform of the GKFG to reflect the fixtures and results of the Urban and Rural Area Cricket Competitions" 
     	},{
     		"employer": "Intcomex",
     		"title": "Computer Technician Intern",
     		"location": "Kingston, Jamaica",
-    		"dates": "2013",
-    		"description": "Worked to fix various computer issues ranging from hardware to software issues" 
+    		"dates": "Jan 2013 - Dec 2013",
+    		"description": "Worked to fix various computer issues ranging from hardware to software issues, Troubleshooting, Diagnosing and Repairing a variety of computer related issues" 
     	}]
 };
 var projects = {
@@ -71,7 +71,7 @@ var education = {
         "name": "Simon Fraser University",
         "location": "Vancouver, Canada",
         "degree": "BSc. in Computer Science Candidate",
-        "majors": "Computer Science",
+        "majors": ["Computer Science"],
         "dates": 2019,
         "url": "https://www.sfu.ca"
 
@@ -79,7 +79,7 @@ var education = {
         "name": "University of the West Indies, Mona Campus",
         "location": "Kingston, Jamaica",
         "degree": "BSc. in Computer Science (Transferred)",
-        "majors": "Computer Science",
+        "majors": ["Computer Science"],
         "dates": 2015,
         "url": "https://www.uwimona.edu.jm"
       },
@@ -87,7 +87,7 @@ var education = {
         "name": "Ardenne High School",
         "location": "Kingston, Jamaica",
         "degree": "CAPE Associate Degree in Computing",
-        "majors": "Physics, Computer Science, Math",
+        "majors": ["Physics", "Computer Science", "Math"],
         "dates": 2014,
         "url": "https://www.ardennehighschool.edu.jm"
       }
@@ -117,12 +117,28 @@ bio.display = function(){
     $("#header").prepend(formattedHeaderRole);
     $("#header").prepend(formattedHeaderName);
 
-    var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-    var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
-    var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
-    var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
-    var formattedLinkedIn = HTMLlinkedIn.replace("%data%", bio.contacts.linkedin) ;
-    var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+    var formattedMobile = HTMLmobile.replace("#", "tel:"+bio.contacts.mobile);
+    var formattedEmail = HTMLemail.replace("#", "mailto:" + bio.contacts.email);
+    var formattedGithub = HTMLgithub.replace("#", bio.contacts.github);
+    var formattedTwitter = HTMLtwitter.replace("#", bio.contacts.twitter);
+    var formattedLinkedIn = HTMLlinkedIn.replace("#", bio.contacts.linkedin) ;
+    var formattedLocation = HTMLlocation.replace("#", "#mapDiv");
+
+    formattedMobile = formattedMobile.replace("%data%", bio.contacts.mobile);
+    formattedEmail = formattedEmail.replace("%data%", bio.contacts.email);
+    formattedGithub = formattedGithub.replace("%data%", "@realgio95");
+    formattedTwitter = formattedTwitter.replace("%data%", "@dappastar1995");
+    formattedLinkedIn = formattedLinkedIn.replace("%data%", "@ghosang") ;
+    formattedLocation = formattedLocation.replace("%data%", bio.contacts.location);
+
+
+    $("#footerContacts").append(formattedMobile);
+    $("#footerContacts").append(formattedEmail);
+    $("#footerContacts").append(formattedGithub);
+    $("#footerContacts").append(formattedTwitter);
+    $("#footerContacts").append(formattedLinkedIn);
+    $("#footerContacts").append(formattedLocation);
+
 
     $("#topContacts").append(formattedMobile);
     $("#topContacts").append(formattedEmail);
@@ -137,14 +153,14 @@ bio.display = function(){
     $("#header").append(formattedBioPic);
     $("#header").append(formattedWelcomeMsg);
 
-    var formattedSkillsStart = HTMLskillsStart.replace("%data%", bio.skills);
+    var formattedSkillsStart = HTMLskillsStart;
+    $("#header").append(formattedSkillsStart);
 
     var numberOfSkills = bio.skills.length;
 
-    var formattedSkill;
     for (var i=0; i < numberOfSkills ; i++){
-        formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
-        $("#header").append(formattedSkill);
+        var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
+        $("#skills").append(formattedSkill);
     }
 }();
 
@@ -152,17 +168,22 @@ work.display = function(){
     var numOfJobs = work.jobs.length;
 
     for (var i=0;i < numOfJobs; i++){
+        var formattedWorkStart = HTMLworkStart;
         var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", work.jobs[i].employer);
         var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[i].title);
         var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[i].dates);
         var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[i].location);
         var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[i].description);
+        var employmentTitle = formattedWorkEmployer + formattedWorkTitle;
 
-        $("#workExperience").append(formattedWorkEmployer);
-        $("#workExperience").append(formattedWorkTitle);
-        $("#workExperience").append(formattedWorkDates);
-        $("#workExperience").append(formattedWorkLocation);
-        $("#workExperience").append(formattedWorkDescription);
+        $("#workExperience").append(formattedWorkStart);
+
+        //$(".work-entry:last").append(formattedWorkEmployer);
+        //$(".work-entry:last").append(formattedWorkTitle);
+        $(".work-entry:last").append(employmentTitle);
+        $(".work-entry:last").append(formattedWorkDates);
+        $(".work-entry:last").append(formattedWorkLocation);
+        $(".work-entry:last").append(formattedWorkDescription);
     }
 }();
 
@@ -170,16 +191,19 @@ projects.display = function(){
     var numOfProjects = projects.projects.length;
 
     for (var i=0;i < numOfProjects; i++){
+        var formattedProjectStart = HTMLprojectStart;
         var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
         var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
         var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
         
-        $("#projects").append(formattedProjectTitle);
-        $("#projects").append(formattedProjectDates);
-        $("#projects").append(formattedProjectDescription);
+        $("#projects").append(formattedProjectStart);
+
+        $(".project-entry:last").append(formattedProjectTitle);
+        $(".project-entry:last").append(formattedProjectDates);
+        $(".project-entry:last").append(formattedProjectDescription);
         for (var y =0 ; y < projects.projects[y].length; y++){
             var formattedProjectPic = HTMLprojectImage.replace("%data%", projects.projects[i].images[y]);
-            $("#projects").append(formattedProjectPic);    
+            $(".project-entry:last").append(formattedProjectPic);    
         }
     }
 }();
@@ -188,17 +212,20 @@ education.display = function(){
     var numOfSchoolsLength = education.schools.length;
 
     for (var i=0;i < numOfSchoolsLength; i++){
+        var formattedSchoolStart =  HTMLschoolStart;
         var formattedSchoolName =  HTMLschoolName.replace("%data%", education.schools[i].name);
         var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree) ;
         var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[i].dates) ;
         var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[i].location) ;
         var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[i].major) ;
 
-        $("#education").append(formattedSchoolName);
-        $("#education").append(formattedSchoolDegree);
-        $("#education").append(formattedSchoolDates);
-        $("#education").append(formattedSchoolLocation);
-        $("#education").append(formattedSchoolMajor);
+        $("#education").append(formattedSchoolStart);
+
+        $(".education-entry:last").append(formattedSchoolName);
+        $(".education-entry:last").append(formattedSchoolDegree);
+        $(".education-entry:last").append(formattedSchoolDates);
+        $(".education-entry:last").append(formattedSchoolLocation);
+        $(".education-entry:last").append(formattedSchoolMajor);
     }
 
 
@@ -213,12 +240,23 @@ education.display = function(){
         var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[i].dates);
         var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[i].url);
 
-        $("#education").append(formattedOnlineTitle);
-        $("#education").append(formattedOnlineSchool);
-        $("#education").append(formattedOnlineDates);
-        $("#education").append(formattedOnlineURL);
+        $(".education-entry:last").append(formattedOnlineTitle);
+        $(".education-entry:last").append(formattedOnlineSchool);
+        $(".education-entry:last").append(formattedOnlineDates);
+        $(".education-entry:last").append(formattedOnlineURL);
     }
 }();
+
+function addLink(html, url, text){
+    if (!text){
+        text=url;
+    }
+    
+    var formattedURL = html.replace("#", url);
+    formattedURL = formattedURL.replace("%data%", text);
+
+    return formattedURL;
+}
 
 //Adding the Google Maps script element to the index.html
 $("#mapDiv").append(googleMap);
