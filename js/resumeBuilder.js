@@ -1,7 +1,3 @@
-/*
-This is empty on purpose! Your code to build the resume will go here.
- */
-
 var bio = {
     "name": "Giovanni HoSang",
     "role": "Software Developer",
@@ -14,9 +10,9 @@ var bio = {
         "linkedin": "https://www.linkedin.com/in/ghosang/"
     },
     "welcomeMessage": "Where personality meets tech!",
-    "skills": ["Javascript", "ReactJS", "Java", "C++", "C", "Java", "Python"] ,
+    "skills": ["Javascript", "Java", "C++", "C", "Java", "Python"] ,
     "interests": ["Soccer", "Cricket", "Reggae", "Soca", "Cricket"],
-    "biopic": "https://scontent.fcxh3-1.fna.fbcdn.net/v/t1.0-9/30652642_10204563817451903_7451400214222471168_n.jpg?_nc_cat=0&oh=a7ebafb6772c6220d6510ad51ecada88&oe=5B54F9DF"
+    "biopic": "https://media.licdn.com/dms/image/C5603AQEXnjLQjydzZw/profile-displayphoto-shrink_200_200/0?e=1531958400&v=beta&t=WR8NrnoxXOIy7zSU2GTEEUbPSwzG6qts8pJWSztZCbI"
 };
 
 var work = {
@@ -217,15 +213,18 @@ education.display = function(){
         var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree) ;
         var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[i].dates) ;
         var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[i].location) ;
-        var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[i].major) ;
+        
 
         $("#education").append(formattedSchoolStart);
 
-        $(".education-entry:last").append(formattedSchoolName);
-        $(".education-entry:last").append(formattedSchoolDegree);
+        $(".education-entry:last").append(formattedSchoolName + formattedSchoolDegree);
         $(".education-entry:last").append(formattedSchoolDates);
         $(".education-entry:last").append(formattedSchoolLocation);
-        $(".education-entry:last").append(formattedSchoolMajor);
+        
+        for (var r=0; r< education.schools[i].majors.length; r++){
+             var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[i].majors[r]) ;
+             $(".education-entry:last").append(formattedSchoolMajor);   
+         }
     }
 
 
