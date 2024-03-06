@@ -1,4 +1,4 @@
-# Giovannni HoSSang
+# Giovannni HoSang
 # Udacity Web Developer Nanodegree Javascript Basics
 # https://classroom.udacity.com/courses/ud804
 
